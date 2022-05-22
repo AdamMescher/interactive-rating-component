@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import { ReactComponent as InfoIcon } from "../../../public/assets/images/info-icon.svg";
 
 const Rating = () => {
   const [submitted, setSubmitted] = React.useState<boolean>(false);
@@ -39,7 +40,7 @@ const Rating = () => {
   return (
     <Wrapper>
       <IconContainer>
-        <img src="/assets/images/icon-star.svg" alt="" />
+        <img src="/assets/images/icon-star.svg" alt="star icon" />
       </IconContainer>
       <Title>How did we do?</Title>
       <Copy>
@@ -59,7 +60,12 @@ const Rating = () => {
       </RatingsContainer>
       <Button onClick={handleSubmitClick}>Submit</Button>
       {showSubmitError ? (
-        <ErrorMessage>Please choose a rating</ErrorMessage>
+        <ErrorMessage>
+          <ErrorMessageIconContainer>
+            <InfoIcon />
+          </ErrorMessageIconContainer>
+          <span>Please choose a rating</span>
+        </ErrorMessage>
       ) : null}
     </Wrapper>
   );
@@ -69,7 +75,7 @@ const Wrapper = styled.div`
   --transition: 200ms ease-in-out;
   font-family: var(--fontFamily);
   font-size: 15px;
-  background: var(--veryDarkBlue);
+  background: var(--darkBlue);
   max-width: 415px;
   min-width: 325px;
   display: flex;
@@ -80,13 +86,17 @@ const Wrapper = styled.div`
 const IconContainer = styled.div`
   background: white;
   width: min-content;
-  padding: 12px;
+  height: 46px;
+  width: 46px;
   line-height: 0;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--darkBlue);
+  background: var(--mediumGrey);
+  img {
+    width: 50%;
+  }
 `;
 const Title = styled.h3`
   font-weight: var(--fw-bold);
@@ -112,9 +122,10 @@ const Option = styled.button<{ active: boolean }>`
   height: 50px;
   width: 50px;
   border-radius: 50%;
+  font-weight: var(--fw-bold);
   background: ${(props) =>
-    props.active ? "var(--orange)" : "var(--darkBlue)"};
-  color: ${(props) => (props.active ? "var(--white)" : "var(--mediumGrey)")};
+    props.active ? "var(--orange)" : "var(--mediumGrey)"};
+  color: ${(props) => (props.active ? "var(--white)" : "var(--lightGrey)")};
   font-weight: var(--bold);
   &:hover {
     transition: var(--transition);
@@ -129,6 +140,8 @@ const Button = styled.button`
   border: none;
   background: var(--orange);
   color: var(--white);
+  font-weight: var(--fw-bold);
+  letter-spacing: 1.5px;
   cursor: pointer;
   &:hover {
     transition: var(--transition);
@@ -142,6 +155,16 @@ const Button = styled.button`
 const ErrorMessage = styled.p`
   color: cyan;
   margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+const ErrorMessageIconContainer = styled.div`
+  height: 20px;
+  width: 20px;
+  svg {
+    fill: cyan;
+  }
 `;
 const SubmittedWrapper = styled(Wrapper)`
   justify-content: center;
