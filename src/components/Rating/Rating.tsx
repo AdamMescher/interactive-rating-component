@@ -1,6 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
-import { ReactComponent as InfoIcon } from "../../../public/assets/images/info-icon.svg";
+import { ReactComponent as StarIcon } from "../../assets/images/icon-star.svg";
+import { ReactComponent as InfoIcon } from "../../assets/images/info-icon.svg";
+import { ReactComponent as ThankYouIllustration } from "../../assets/images/illustration-thank-you.svg";
 
 const Rating = () => {
   const [submitted, setSubmitted] = React.useState<boolean>(false);
@@ -26,7 +28,7 @@ const Rating = () => {
     return (
       <SubmittedWrapper>
         <IllustrationContainer>
-          <img src="/assets/images/illustration-thank-you.svg" alt="yup" />
+          <ThankYouIllustration />
         </IllustrationContainer>
         <Choice>You selected {selectedRating} out of 5</Choice>
         <Title>Thank you!</Title>
@@ -39,9 +41,9 @@ const Rating = () => {
   }
   return (
     <Wrapper>
-      <IconContainer>
-        <img src="/assets/images/icon-star.svg" alt="star icon" />
-      </IconContainer>
+      <StarIconContainer>
+        <StarIcon />
+      </StarIconContainer>
       <Title>How did we do?</Title>
       <Copy>
         Please let us know how we did with your support request. All feedback is
@@ -83,7 +85,7 @@ const Wrapper = styled.div`
   padding: 24px 28px;
   border-radius: 12px;
 `;
-const IconContainer = styled.div`
+const StarIconContainer = styled.div`
   background: white;
   width: min-content;
   height: 46px;
@@ -100,6 +102,8 @@ const IconContainer = styled.div`
 `;
 const Title = styled.h3`
   font-weight: var(--fw-bold);
+  letter-spacing: 0.75px;
+  font-size: 24px;
   color: var(--white);
   margin-top: 32px;
 `;
@@ -141,7 +145,7 @@ const Button = styled.button`
   background: var(--orange);
   color: var(--white);
   font-weight: var(--fw-bold);
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   cursor: pointer;
   &:hover {
     transition: var(--transition);
@@ -175,7 +179,7 @@ const IllustrationContainer = styled.div``;
 const Choice = styled.div`
   color: var(--orange);
   padding: 2px 20px;
-  background: var(--darkBlue);
+  background: hsl(213deg 17% 19%);
   width: min-content;
   white-space: nowrap;
   border-radius: 75px;
